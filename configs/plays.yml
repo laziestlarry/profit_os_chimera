@@ -1,0 +1,374 @@
+plays:
+  - id: low_cr_high_traffic
+    name: "Landing Conversion Upgrade"
+    owner_agent: growth_commander_ai
+    intent: "Improve conversion when traffic is sufficient but CR is low."
+    triggers:
+      all:
+        - kpi: "cr_main_funnel"
+          relation: "ratio_to_target"
+          operator: "<"
+          value: 0.8
+        - kpi: "sessions_main_30d"
+          relation: "absolute"
+          operator: ">"
+          value: 500
+    impact_hypothesis: "CR uplift of 20–50% within 14–30 days."
+    job_plan:
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "copy_bot"
+        params:
+          channel: "landing_page"
+          action: "generate_two_new_headline_variants_and_value_stack"
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "copy_bot"
+        params:
+          channel: "email"
+          action: "draft_reactivation_sequence_for_recent_visitors"
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "Landing conversion uplift experiment launched."
+
+  - id: low_traffic_healthy_cr
+    name: "Zero-Ad Traffic Expansion"
+    owner_agent: growth_commander_ai
+    intent: "Drive more qualified visitors without paid ads."
+    triggers:
+      all:
+        - kpi: "cr_main_funnel"
+          relation: "ratio_to_target"
+          operator: ">="
+          value: 1.0
+        - kpi: "sessions_main_30d"
+          relation: "absolute"
+          operator: "<"
+          value: 300
+    impact_hypothesis: "2–5x traffic within 30–60 days."
+    job_plan:
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "copy_bot"
+        params:
+          channel: "social"
+          action: "generate_7_day_zero_ad_campaign_content"
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "fiverr_bot"
+        params:
+          channel: "fiverr_profile"
+          action: "optimize_profile_and_gig_keywords_for_discovery"
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "Zero-ad traffic campaign launched."
+
+  - id: strong_revenue_weak_retention
+    name: "Retention & Loyalty Upgrade"
+    owner_agent: commerce_commander_ai
+    intent: "Increase repeat purchases and loyalty scores."
+    triggers:
+      all:
+        - kpi: "revenue_total_30d"
+          relation: "ratio_to_target"
+          operator: ">="
+          value: 0.9
+        - kpi: "retention_60d"
+          relation: "ratio_to_target"
+          operator: "<"
+          value: 0.8
+    impact_hypothesis: "Retention uplift leading to +10–20% LTV."
+    job_plan:
+      - type: "EXECUTE_PLAY_COMMERCE"
+        handler: "shopify_bot"
+        params:
+          action: "create_loyalty_bundle_and_returning_customer_discount"
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "copy_bot"
+        params:
+          channel: "email"
+          action: "design_post_purchase_loyalty_sequence"
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "Retention loyalty upgrade launched."
+
+  - id: high_cac_weak_margin
+    name: "Efficiency & Profitability Fix"
+    owner_agent: evidence_commander_ai
+    intent: "Reduce CAC and improve margin."
+    triggers:
+      any:
+        - kpi: "cac_paid"
+          relation: "absolute"
+          operator: ">"
+          value: 40
+    impact_hypothesis: "Cut CAC to healthy range and protect cash."
+    job_plan:
+      - type: "EXECUTE_PLAY_COMMERCE"
+        handler: "commerce_commander_ai"
+        params:
+          action: "pause_underperforming_paid_channels_and_shift_to_zero_ad_routes"
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "copy_bot"
+        params:
+          channel: "landing_page"
+          action: "clarify_value_proposition_and_package_to_support_higher_pricing"
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "CAC control play executed."
+
+  - id: low_fiverr_visibility
+    name: "Fiverr Gig Optimization & Launch"
+    owner_agent: growth_commander_ai
+    intent: "Increase Fiverr gig visibility and orders."
+    triggers:
+      any:
+        - kpi: "fiverr_impressions_7d"
+          relation: "absolute"
+          operator: "<"
+          value: 200
+        - kpi: "fiverr_orders_30d"
+          relation: "ratio_to_target"
+          operator: "<"
+          value: 0.8
+    impact_hypothesis: "2–3x impressions and first orders within 14–30 days."
+    job_plan:
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "fiverr_bot"
+        params:
+          action: "optimize_gig_title_description_and_keywords"
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "copy_bot"
+        params:
+          channel: "social"
+          action: "create_shorts_scripts_promoting_fiverr_gig"
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "Fiverr gig optimization launched."
+
+  - id: low_shopify_traffic
+    name: "Shopify Store Traffic Boost"
+    owner_agent: growth_commander_ai
+    intent: "Drive more traffic to Shopify store."
+    triggers:
+      all:
+        - kpi: "shopify_sessions_30d"
+          relation: "absolute"
+          operator: "<"
+          value: 500
+        - kpi: "cr_main_funnel"
+          relation: "ratio_to_target"
+          operator: ">="
+          value: 0.8
+    impact_hypothesis: "3–5x sessions within 30–60 days via zero-ad channels."
+    job_plan:
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "copy_bot"
+        params:
+          channel: "social"
+          action: "create_product_showcase_shorts_and_posts"
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "social_pack_bot"
+        params:
+          action: "generate_zen_product_social_pack"
+      - type: "EXECUTE_PLAY_PRODUCT"
+        handler: "shopify_bot"
+        params:
+          action: "optimize_product_listings_seo"
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "Shopify traffic boost campaign launched."
+
+  - id: launch_hero_products
+    name: "Launch Hero Products & Gigs"
+    owner_agent: commerce_commander_ai
+    intent: "Launch initial revenue-generating products and services."
+    triggers:
+      any:
+        - kpi: "fiverr_orders_30d"
+          relation: "absolute"
+          operator: "=="
+          value: 0
+        - kpi: "shopify_orders_30d"
+          relation: "absolute"
+          operator: "=="
+          value: 0
+    impact_hypothesis: "First sales within 7–14 days of launch."
+    job_plan:
+      - type: "EXECUTE_PLAY_COMMERCE"
+        handler: "fiverr_bot"
+        params:
+          action: "create_hero_fiverr_gig_ai_youtube_automation"
+      - type: "EXECUTE_PLAY_PRODUCT"
+        handler: "shopify_bot"
+        params:
+          action: "publish_zen_calm_starter_pack_bundle"
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "copy_bot"
+        params:
+          channel: "social"
+          action: "create_launch_announcement_content"
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "Hero products and gigs launched."
+
+  # NEW: Enhanced Plays
+  - id: hunt_income_opportunities
+    name: "Automated Income Opportunity Hunt"
+    owner_agent: opportunity_commander_ai
+    intent: "Automatically scout and apply to income opportunities."
+    triggers:
+      any:
+        - kpi: "revenue_total_30d"
+          relation: "ratio_to_target"
+          operator: "<"
+          value: 0.7
+        - kpi: "fiverr_orders_30d"
+          relation: "absolute"
+          operator: "<"
+          value: 3
+    impact_hypothesis: "3–5 new income opportunities identified and applied to within 7 days."
+    job_plan:
+      - type: "HUNT_OPPORTUNITIES"
+        handler: "opportunity_commander_ai"
+        params:
+          types: ["freelance", "remote_job", "side_hustle"]
+          auto_apply: true
+      - type: "ANALYZE_INCOME_STREAMS"
+        handler: "opportunity_commander_ai"
+        params:
+          action: "analyze_current_streams_and_optimize"
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "Income opportunity hunt completed."
+
+  - id: social_media_automation_launch
+    name: "Social Media Automation System Launch"
+    owner_agent: growth_commander_ai
+    intent: "Launch automated social media content system."
+    triggers:
+      any:
+        - kpi: "sessions_main_30d"
+          relation: "absolute"
+          operator: "<"
+          value: 500
+        - kpi: "fiverr_impressions_7d"
+          relation: "absolute"
+          operator: "<"
+          value: 200
+    impact_hypothesis: "2–3x social engagement and traffic within 14–30 days."
+    job_plan:
+      - type: "CREATE_SOCIAL_CONTENT"
+        handler: "social_pack_bot"
+        params:
+          platforms: ["youtube", "instagram", "tiktok"]
+          content_count: 14
+          theme: "AI automation and business growth"
+      - type: "SCHEDULE_SOCIAL_POSTS"
+        handler: "social_pack_bot"
+        params:
+          schedule: "daily"
+          auto_post: true
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "Social media automation system launched."
+
+  - id: trend_capitalization
+    name: "Capitalize on Emerging Trends"
+    owner_agent: intelligence_commander_ai
+    intent: "Detect and capitalize on emerging trends and opportunities."
+    triggers:
+      all:
+        - kpi: "revenue_total_30d"
+          relation: "ratio_to_target"
+          operator: "<"
+          value: 1.0
+    impact_hypothesis: "Early trend adoption leading to +20–40% revenue within 30–60 days."
+    job_plan:
+      - type: "DETECT_TRENDS"
+        handler: "trend_bot"
+        params:
+          categories: ["ai", "market", "technology"]
+          limit: 5
+      - type: "FIND_PARTNERSHIPS"
+        handler: "intelligence_commander_ai"
+        params:
+          partner_types: ["creator", "agency"]
+      - type: "SCOUT_FUNDING"
+        handler: "intelligence_commander_ai"
+        params:
+          types: ["grant", "accelerator"]
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "Trend capitalization play executed."
+
+  - id: content_rich_value_creation
+    name: "Rich Content Value Creation"
+    owner_agent: growth_commander_ai
+    intent: "Create high-value content assets (dashboards, infographics, storyboards)."
+    triggers:
+      any:
+        - kpi: "sessions_main_30d"
+          relation: "absolute"
+          operator: "<"
+          value: 1000
+    impact_hypothesis: "Rich content increases engagement by 30–50% and positions as authority."
+    job_plan:
+      - type: "CREATE_DASHBOARD"
+        handler: "dashboard_bot"
+        params:
+          data_source: "kpi_snapshot"
+          style: "modern"
+      - type: "CREATE_INFOGRAPHIC"
+        handler: "dashboard_bot"
+        params:
+          topic: "Growth Metrics Overview"
+          style: "energizing"
+      - type: "CREATE_STORYBOARD"
+        handler: "dashboard_bot"
+        params:
+          theme: "Success Story"
+          format: "video"
+      - type: "EXECUTE_PLAY_GROWTH"
+        handler: "social_pack_bot"
+        params:
+          action: "distribute_content_assets"
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "Rich content assets created and distributed."
+
+  - id: minimize_human_work
+    name: "Automation Maximization Play"
+    owner_agent: infra_commander_ai
+    intent: "Identify and automate all manual processes to minimize human work."
+    triggers:
+      all:
+        - kpi: "revenue_total_30d"
+          relation: "ratio_to_target"
+          operator: ">="
+          value: 0.8
+    impact_hypothesis: "Reduce manual work by 50–70%, freeing time for high-value activities."
+    job_plan:
+      - type: "CREATE_AUTOMATION"
+        handler: "automation_bot"
+        params:
+          action: "audit_manual_processes_and_automate"
+      - type: "SCHEDULE_TASKS"
+        handler: "automation_bot"
+        params:
+          action: "setup_recurring_automated_tasks"
+      - type: "MINIMIZE_MANUAL_WORK"
+        handler: "automation_bot"
+        params:
+          action: "implement_workflow_automations"
+      - type: "LOG_EVIDENCE"
+        handler: "evidence_commander_ai"
+        params:
+          note: "Automation maximization play executed."

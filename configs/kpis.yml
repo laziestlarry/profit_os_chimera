@@ -1,0 +1,191 @@
+kpis:
+  - name: revenue_total_30d
+    label: "Total Revenue (last 30 days)"
+    unit: "USD"
+    category: "revenue"
+    dimension: "company"
+    target: 5000
+    warning_ratio_below: 0.8
+    critical_ratio_below: 0.5
+    description: "All revenue across main streams in last 30 days."
+
+  - name: cr_main_funnel
+    label: "Main Funnel Conversion Rate"
+    unit: "ratio"
+    category: "conversion"
+    dimension: "funnel"
+    target: 0.05
+    warning_ratio_below: 0.8
+    critical_ratio_below: 0.5
+    description: "Sessions to purchase for primary sales funnel."
+
+  - name: sessions_main_30d
+    label: "Main Funnel Sessions (30d)"
+    unit: "count"
+    category: "traffic"
+    dimension: "funnel"
+    min_healthy: 500
+    warning_below: 300
+    critical_below: 100
+    description: "Unique sessions reaching primary funnel."
+
+  - name: cac_paid
+    label: "Customer Acquisition Cost (Paid)"
+    unit: "USD"
+    category: "efficiency"
+    dimension: "company"
+    max_healthy: 30
+    warning_above: 40
+    critical_above: 60
+    description: "Average paid acquisition cost per new customer."
+
+  - name: retention_60d
+    label: "60-Day Customer Retention"
+    unit: "ratio"
+    category: "retention"
+    dimension: "company"
+    target: 0.35
+    warning_ratio_below: 0.8
+    critical_ratio_below: 0.5
+    description: "Share of customers who buy again within 60 days."
+
+  - name: nps
+    label: "Net Promoter Score"
+    unit: "score"
+    category: "loyalty"
+    dimension: "company"
+    min_healthy: 50
+    warning_below: 30
+    critical_below: 0
+    description: "Customer satisfaction & loyalty indicator."
+
+  - name: aov
+    label: "Average Order Value"
+    unit: "USD"
+    category: "revenue"
+    dimension: "company"
+    target: 50
+    warning_ratio_below: 0.8
+    critical_ratio_below: 0.6
+    description: "Average value per transaction."
+
+  - name: fiverr_impressions_7d
+    label: "Fiverr Gig Impressions (7d)"
+    unit: "count"
+    category: "traffic"
+    dimension: "channel"
+    min_healthy: 200
+    warning_below: 100
+    critical_below: 50
+    description: "Fiverr gig impressions in last 7 days."
+
+  - name: fiverr_orders_30d
+    label: "Fiverr Orders (30d)"
+    unit: "count"
+    category: "revenue"
+    dimension: "channel"
+    target: 5
+    warning_ratio_below: 0.8
+    critical_ratio_below: 0.5
+    description: "Number of Fiverr orders in last 30 days."
+
+  - name: shopify_sessions_30d
+    label: "Shopify Sessions (30d)"
+    unit: "count"
+    category: "traffic"
+    dimension: "channel"
+    min_healthy: 500
+    warning_below: 200
+    critical_below: 100
+    description: "Shopify store sessions in last 30 days."
+
+  - name: shopify_orders_30d
+    label: "Shopify Orders (30d)"
+    unit: "count"
+    category: "revenue"
+    dimension: "channel"
+    target: 10
+    warning_ratio_below: 0.8
+    critical_ratio_below: 0.5
+    description: "Number of Shopify orders in last 30 days."
+
+  # NEW: Enhanced KPIs
+  - name: income_streams_count
+    label: "Active Income Streams"
+    unit: "count"
+    category: "diversification"
+    dimension: "company"
+    target: 3
+    warning_below: 2
+    critical_below: 1
+    description: "Number of active income streams (diversification metric)."
+
+  - name: automation_coverage
+    label: "Automation Coverage"
+    unit: "ratio"
+    category: "efficiency"
+    dimension: "company"
+    target: 0.7
+    warning_ratio_below: 0.5
+    critical_ratio_below: 0.3
+    description: "Percentage of processes that are automated (0-1)."
+
+  - name: social_engagement_rate
+    label: "Social Media Engagement Rate"
+    unit: "ratio"
+    category: "engagement"
+    dimension: "channel"
+    target: 0.05
+    warning_ratio_below: 0.8
+    critical_ratio_below: 0.5
+    description: "Social media engagement rate (likes, comments, shares / followers)."
+
+  - name: opportunities_applied_30d
+    label: "Opportunities Applied (30d)"
+    unit: "count"
+    category: "growth"
+    dimension: "company"
+    target: 10
+    warning_below: 5
+    critical_below: 2
+    description: "Number of income opportunities applied to in last 30 days."
+
+  - name: content_assets_created_30d
+    label: "Content Assets Created (30d)"
+    unit: "count"
+    category: "content"
+    dimension: "company"
+    target: 20
+    warning_below: 10
+    critical_below: 5
+    description: "Number of content assets (posts, videos, graphics) created."
+
+  - name: trend_alignment_score
+    label: "Trend Alignment Score"
+    unit: "score"
+    category: "intelligence"
+    dimension: "company"
+    target: 0.8
+    warning_ratio_below: 0.6
+    critical_ratio_below: 0.4
+    description: "How well business aligns with current trends (0-1)."
+
+  - name: partnership_opportunities_identified
+    label: "Partnership Opportunities Identified"
+    unit: "count"
+    category: "growth"
+    dimension: "company"
+    target: 5
+    warning_below: 3
+    critical_below: 1
+    description: "Number of partnership opportunities identified and evaluated."
+
+  - name: manual_work_hours_per_week
+    label: "Manual Work Hours Per Week"
+    unit: "hours"
+    category: "efficiency"
+    dimension: "company"
+    max_healthy: 10
+    warning_above: 20
+    critical_above: 30
+    description: "Hours spent on manual, automatable tasks per week."

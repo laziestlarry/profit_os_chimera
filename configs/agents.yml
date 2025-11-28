@@ -1,0 +1,213 @@
+agents:
+  # Commander Agents (Directors)
+  - id: commerce_commander_ai
+    label: "Director of Commerce"
+    handles:
+      - SUGGEST_PLAYS
+      - PLAN_JOB_QUEUE_FOR_PLAY
+      - EXECUTE_PLAY_COMMERCE
+    role: "Designs offers, pricing experiments, bundles, and revenue tests."
+    libraries:
+      - "docs/offer_design_frameworks.md"
+      - "docs/pricing_playbook.md"
+    values:
+      - "maximize_long_term_clv"
+      - "protect_brand_positioning"
+      - "respect_margin_constraints"
+    style: "decisive, experiment-driven, evidence-based"
+
+  - id: product_commander_ai
+    label: "Director of Supply & Product"
+    handles:
+      - EXECUTE_PLAY_PRODUCT
+    role: "Owns catalog quality, product-market fit, and upsell/cross-sell structures."
+    libraries:
+      - "docs/catalog_architecture.md"
+      - "docs/upsell_cross_sell_patterns.md"
+    values:
+      - "customer_outcome_first"
+      - "avoid_feature_bloat"
+
+  - id: growth_commander_ai
+    label: "Director of Growth"
+    handles:
+      - SUGGEST_PLAYS
+      - PLAN_JOB_QUEUE_FOR_PLAY
+      - EXECUTE_PLAY_GROWTH
+    role: "Plans channels, campaigns, acquisition, content systems."
+    libraries:
+      - "docs/acquisition_channels_matrix.md"
+      - "docs/content_growth_systems.md"
+    values:
+      - "zero_ad_first"
+      - "compound_small_wins"
+
+  - id: infra_commander_ai
+    label: "Director of Technology"
+    handles:
+      - INGEST_METRICS
+      - TRAIN_AGENT
+    role: "Owns data pipelines, environments, deployment and automation."
+    libraries:
+      - "docs/architecture_principles.md"
+      - "docs/data_ingestion_standards.md"
+    values:
+      - "stability_over_flash"
+      - "automation_before_headcount"
+
+  - id: evidence_commander_ai
+    label: "Director of Evidence & Finance"
+    handles:
+      - EVALUATE_KPIS
+      - LOG_EVIDENCE
+    role: "Defines KPIs, evaluates performance, ties plays to financial outcomes."
+    libraries:
+      - "docs/kpi_definitions.md"
+      - "docs/roi_models.md"
+    values:
+      - "truth_over_narrative"
+      - "full_traceability"
+
+  # NEW: Enhanced Commander Agents
+  - id: opportunity_commander_ai
+    label: "Commander Opportunity Hunter"
+    handles:
+      - HUNT_OPPORTUNITIES
+      - ANALYZE_INCOME_STREAMS
+      - AUTO_APPLY_OPPORTUNITY
+    role: "Scouts income opportunities, freelance gigs, remote jobs, side hustles, passive income."
+    libraries:
+      - "modules/commander_hunter/hunter.py"
+    values:
+      - "maximize_income_diversity"
+      - "minimize_time_investment"
+      - "automate_application_process"
+
+  - id: intelligence_commander_ai
+    label: "AI Business Intelligence Commander"
+    handles:
+      - DETECT_TRENDS
+      - FIND_PARTNERSHIPS
+      - SCOUT_FUNDING
+      - ANALYZE_COMPETITION
+    role: "Monitors trends, finds partnerships, scouts funding, analyzes competition."
+    libraries:
+      - "modules/ai_intelligence/intelligence.py"
+    values:
+      - "stay_ahead_of_curves"
+      - "leverage_network_effects"
+      - "capitalize_on_opportunities"
+
+  # Execution Bots
+  - id: copy_bot
+    label: "Copy & Narrative Bot"
+    handles:
+      - EXECUTE_PLAY_GROWTH
+    role: "Creates landing copy, emails, scripts for Shorts, gig descriptions."
+    libraries:
+      - "docs/tone_of_voice.md"
+      - "docs/conversion_copy_templates.md"
+
+  - id: shopify_bot
+    label: "Shopify Automation Bot"
+    handles:
+      - EXECUTE_PLAY_COMMERCE
+      - EXECUTE_PLAY_PRODUCT
+    role: "Implements price changes, product publishing, bundle creation on Shopify."
+    libraries:
+      - "docs/shopify_workflows.md"
+
+  - id: fiverr_bot
+    label: "Fiverr Execution Bot"
+    handles:
+      - EXECUTE_PLAY_COMMERCE
+      - EXECUTE_PLAY_GROWTH
+    role: "Creates/updates gigs, packages, FAQs on Fiverr."
+    libraries:
+      - "docs/fiverr_playbook.md"
+
+  - id: mockup_bot
+    label: "Mockup & Visual Bot"
+    handles:
+      - EXECUTE_PLAY_PRODUCT
+    role: "Generates product mockups, room scenes, and visual assets."
+    libraries:
+      - "docs/visual_asset_standards.md"
+
+  - id: social_pack_bot
+    label: "Social Content Pack Bot"
+    handles:
+      - EXECUTE_PLAY_GROWTH
+      - CREATE_SOCIAL_CONTENT
+      - SCHEDULE_SOCIAL_POSTS
+    role: "Creates social media content packs, carousels, and Shorts scripts."
+    libraries:
+      - "docs/social_content_templates.md"
+      - "modules/social_automation/automator.py"
+
+  - id: audit_bot
+    label: "Audit & Quality Bot"
+    handles:
+      - LOG_EVIDENCE
+    role: "Checks data quality, config validity, and compliance."
+    libraries:
+      - "docs/quality_standards.md"
+
+  - id: evidence_bot
+    label: "Evidence Collection Bot"
+    handles:
+      - LOG_EVIDENCE
+    role: "Collects and structures evidence from actions and outcomes."
+    libraries:
+      - "docs/evidence_collection_standards.md"
+
+  # NEW: Enhanced Bots
+  - id: lazy_larry_bot
+    label: "Lazy Larry Personal Assistant Bot"
+    handles:
+      - PERSONAL_ASSISTANCE
+      - CHAT_INTERACTION
+      - PROFILE_MANAGEMENT
+    role: "Multi-layer profiled personal assistant, chatbot, task management."
+    libraries:
+      - "modules/lazy_larry/assistant.py"
+    values:
+      - "emotional_intelligence"
+      - "proactive_help"
+      - "minimize_user_effort"
+
+  - id: dashboard_bot
+    label: "Dashboard Builder Bot"
+    handles:
+      - CREATE_DASHBOARD
+      - CREATE_INFOGRAPHIC
+      - CREATE_STORYBOARD
+    role: "Creates dashboards, infographics, storyboards with emotional design."
+    libraries:
+      - "modules/content_design/creator.py"
+    values:
+      - "visual_clarity"
+      - "emotional_engagement"
+      - "data_storytelling"
+
+  - id: trend_bot
+    label: "Trend Detection Bot"
+    handles:
+      - DETECT_TRENDS
+      - ANALYZE_MARKET_DRIVERS
+    role: "Detects trends, analyzes market drivers, competition."
+    libraries:
+      - "modules/ai_intelligence/intelligence.py"
+
+  - id: automation_bot
+    label: "Automation Workflow Bot"
+    handles:
+      - CREATE_AUTOMATION
+      - SCHEDULE_TASKS
+      - MINIMIZE_MANUAL_WORK
+    role: "Creates automation workflows to minimize human work."
+    libraries:
+      - "docs/automation_patterns.md"
+    values:
+      - "automate_everything_possible"
+      - "reduce_human_intervention"

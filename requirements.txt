@@ -1,0 +1,33 @@
+# Profit OS Chimera - Python Dependencies
+
+# Core dependencies
+PyYAML>=6.0.1
+
+# API Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+
+# Database
+sqlalchemy>=2.0.0
+alembic>=1.12.0
+
+# Frontend
+streamlit>=1.28.0
+pandas>=2.0.0
+requests>=2.31.0
+
+# Security (for v0.2.0)
+# python-jose[cryptography]>=3.3.0
+# passlib[bcrypt]>=1.7.4
+# python-multipart>=0.0.6
+
+# Monitoring (optional)
+# sentry-sdk>=1.38.0
+# prometheus-client>=0.19.0
+
+# Development dependencies
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.9.0
+flake8>=6.1.0
